@@ -358,7 +358,7 @@ def evaluator_decorator(metric_name):
             for k, value in signature.parameters.items():
                 if k not in kwargs and value.default != inspect.Signature.empty:
                     kwargs_default[k] = value.default
-            if args[0].image_average:
+            if args[0].image_average and metric_name not in ['sortedAP']:
                 kwargs_ps = kwargs.copy()
                 if 'verbose' in kwargs_ps.keys():
                     del kwargs_ps['verbose']
